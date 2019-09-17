@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
   @import 'styles/main.scss';
   * {
-    font-family: 'Montserrat Regular', sans-serif;
+    font-family: 'Montserrat Light', sans-serif;
   }
   .app {
     display: flex;

@@ -18,6 +18,9 @@
       margin: auto;
       display: flex;
       align-items: center;
+      img {
+        height: 50px;
+      }
     }
   }
   &__menu {
@@ -178,5 +181,41 @@
   }
   .app-header__menu-inside {
     width: 100%;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .app-header__menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 305px;
+    height: calc(100vh - 100px);
+    &-fixed {
+      position: absolute;
+      animation: none;
+    }
+    &-inside {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0 0 0;
+      &__item {
+        height: auto;
+        padding: 14px 0;
+        display: flex;
+        flex-direction: column;
+        &-list {
+          background: none;
+          width: auto;
+          padding: 0 0 0 0;
+          position: static;
+          opacity: 1;
+          height: auto;
+          overflow: visible;
+          transform: rotateX(0deg);
+          box-shadow: none;
+        }
+      }
+    }
   }
 }
