@@ -114,6 +114,17 @@
             }
             &-sub {
               position: relative;
+              &__link {
+                display: inline-block;
+                width: 100%;
+                padding: 10px 20px;
+                color: #181818;
+                font-weight: 400;
+                text-transform: none;
+                text-decoration: none;
+                font-size: .928em;
+                transition: .2s;
+              }
               &__list {
                 width: 0px;
                 padding: 10px 0;
@@ -185,35 +196,89 @@
 }
 
 @media all and (max-width: 1200px) {
-  .app-header__menu {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 305px;
-    height: calc(100vh - 100px);
-    &-fixed {
-      position: absolute;
-      animation: none;
+  .app-header {
+    &__fixed {
+      position: fixed;
+      width: 100%;
+      left: 0;
+      top: 0;
     }
-    &-inside {
-      display: flex;
-      flex-direction: column;
-      padding: 20px 0 0 0;
-      &__item {
-        height: auto;
-        padding: 14px 0;
+    &__menu {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 305px;
+      height: calc(100vh - 100px);
+      &-fixed {
+        position: absolute;
+        animation: none;
+      }
+      &-inside {
         display: flex;
         flex-direction: column;
-        &-list {
-          background: none;
-          width: auto;
-          padding: 0 0 0 0;
-          position: static;
-          opacity: 1;
+        padding: 20px 0 0 0;
+        &__item {
           height: auto;
-          overflow: visible;
-          transform: rotateX(0deg);
-          box-shadow: none;
+          padding: 14px 0;
+          display: flex;
+          flex-direction: column;
+          &:hover {
+            &::before {
+              content: none;
+            }
+          }
+          &-title {
+            padding-bottom: 14px;
+            width: 225px;
+            justify-content: center;
+          }
+          &-list {
+            background: none;
+            width: auto;
+            padding: 0 0 0 0;
+            position: static;
+            opacity: 1;
+            height: auto;
+            overflow: visible;
+            transform: rotateX(0deg);
+            box-shadow: none;
+            &__item {
+              width: 225px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              &-link {
+                text-align: center;
+              }
+              &-sub {
+                &__link {
+                  text-align: center;
+                }
+                &:hover {
+                  .app-header__menu-inside__item-list__item-sub__list {
+                    min-width: auto;
+                  }
+                }
+                &__list {
+                  padding: 0 0 0 0;
+                  position: static;
+                  opacity: 1;
+                  width: auto;
+                  overflow: visible;
+                  transform: rotateY(0deg);
+                  box-shadow: none;
+                  &-item {
+                    width: 225px;
+                    display: flex;
+                    justify-content: center;
+                    &__link {
+                      text-align: center;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

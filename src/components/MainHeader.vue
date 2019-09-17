@@ -1,15 +1,15 @@
 <template>
-  <header class="app-header">
-    <div class="app-header__logo">
+  <header class="app-header app-header__fixed">
+    <div class="app-header__logo" >
       <div class="app-header__logo-inside">
         <img src="http://addison.bold-themes.com/main-demo/wp-content/uploads/sites/3/2017/05/Addison-logo-3.png"
              alt="logo" title="addison">
       </div>
     </div>
-    <div class="app-header__menu" v-bind:class="{'app-header__menu-fixed' : menuFixedState}">
+    <div class="app-header__menu" v-bind:class="{'app-header__menu-fixed' : fixedState}">
       <div class="app-header__menu-inside">
         <div class="app-header__menu-inside__item">
-          <a class="app-header__menu-inside__item-title">Home</a>
+          <h3 class="app-header__menu-inside__item-title">Home</h3>
           <ul class="app-header__menu-inside__item-list">
             <li class="app-header__menu-inside__item-list__item">
               <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
@@ -21,7 +21,7 @@
               <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
             </li>
             <li class="app-header__menu-inside__item-list__item app-header__menu-inside__item-list__item-sub">
-              <a class="app-header__menu-inside__item-list__item-link" href="">sub menu</a>
+              <h3 class="app-header__menu-inside__item-list__item-sub__link">Sub menu</h3>
 
               <ul class="app-header__menu-inside__item-list__item-sub__list">
                 <li class="app-header__menu-inside__item-list__item-sub__list-item">
@@ -88,14 +88,14 @@ export default {
   data: () => ({
     menu: null,
     submenu: null,
-    menuFixedState: false
+    fixedState: false
   }),
   mounted () {
     window.addEventListener('scroll', this.scrollHandler)
   },
   methods: {
     scrollHandler () {
-      this.menuFixedState = window.scrollY > 96
+      this.fixedState = window.scrollY > 96
     }
   }
 }

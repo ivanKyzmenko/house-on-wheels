@@ -39,6 +39,15 @@ export default {
       flex-grow: 2;
       height: 1200px;
       background: lightgrey;
+      text-align: center;
+    }
+  }
+
+  @media all and (max-width: 1200px) {
+    .app {
+      &-content {
+        padding-top: 100px;
+      }
     }
   }
 </style>
