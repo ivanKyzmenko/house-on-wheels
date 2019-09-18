@@ -1,5 +1,6 @@
 .app-footer {
   height: 700px;
+  display: flex;
   &__left {
     width: 50%;
     height: 100%;
@@ -7,6 +8,16 @@
     align-items: center;
     justify-content: center;
     background: url(http://addison.bold-themes.com/main-demo/wp-content/uploads/sites/3/2017/05/minimalist-footer-bg.jpg) 50% no-repeat;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: #8bb93e;
+      top: 0;
+      left: 0;
+    }
     &-content {
       width: 350px;
       &__title {
@@ -31,9 +42,122 @@
       &__btn {
         width: 150px;
         height: 35px;
-        border-radius: 20%;
+        border-radius: 50px;
         background: #8bb93e;
         text-align: center;
+        margin-top: 40px;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+    }
+  }
+  &__right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #3f3735;
+    &-top {
+      margin-top: 80px;
+      padding-left: 30px;
+    }
+    &-middle {
+      flex-grow: 2;
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &__title {
+        font-size: 24px;
+        color: #fff;
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          top: calc(100% + 20px);
+          left: 0;
+          width: 80px;
+          height: 5px;
+          border-radius: 3px;
+          background: #8bb93e;
+        }
+      }
+      &__list {
+        padding-left: 0px;
+        margin-top: 80px;
+        &-item {
+          color: #fff;
+          margin-bottom: 15px;
+          font-size: 12px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      &__btn {
+        width: 150px;
+        height: 35px;
+        border-radius: 50px;
+        background: #fff;
+        text-align: center;
+        margin-top: 40px;
+        color: #000000;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+    }
+    &-bottom {
+      padding: 20px 0 20px 30px;
+      height: 100px;
+      background: #322c2a;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &__menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        &-item {
+          color: #fff;
+          text-transform: uppercase;
+          margin-right: 20px;
+          font-size: 12px;
+          text-decoration: none;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      &__copyright {
+        color: #fff;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 996px) {
+  .app-footer {
+    flex-direction: column;
+    height: auto;
+    &__left {
+      width: 100%;
+      padding: 40px 40px;
+      background-size: cover;
+      &-content {
+        width: 100%;
+      }
+    }
+    &__right {
+      width: 100%;
+      padding: 40px 0 0 0;
+      &-top {
+        margin-top: 0;
+      }
+      &-bottom {
+        margin-top: 40px;
       }
     }
   }
