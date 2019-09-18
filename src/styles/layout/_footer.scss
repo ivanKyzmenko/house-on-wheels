@@ -1,0 +1,40 @@
+.app-footer {
+  height: 700px;
+  &__left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(http://addison.bold-themes.com/main-demo/wp-content/uploads/sites/3/2017/05/minimalist-footer-bg.jpg) 50% no-repeat;
+    &-content {
+      width: 350px;
+      &__title {
+        font-size: 36px;
+        position: relative;
+        color: #fff;
+        &::before {
+          content: '';
+          position: absolute;
+          top: calc(100% + 20px);
+          width: 100px;
+          height: 5px;
+          border-radius: 3px;
+          background: #8bb93e;
+        }
+      }
+      &__text {
+        margin-top: 40px;
+        line-height: 1.5;
+        color: #fff;
+      }
+      &__btn {
+        width: 150px;
+        height: 35px;
+        border-radius: 20%;
+        background: #8bb93e;
+        text-align: center;
+      }
+    }
+  }
+}

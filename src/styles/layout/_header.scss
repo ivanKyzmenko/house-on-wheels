@@ -231,6 +231,25 @@
             padding-bottom: 14px;
             width: 225px;
             justify-content: center;
+            position: relative;
+            &::before {
+              content: '';
+              position: absolute;
+              width: 8px;
+              height: 8px;
+              border-left: 2px solid #191919;
+              border-top: 2px solid #191919;
+              right: 0;
+              top: 0;
+              transform: rotate(-135deg);
+              transition: .2s;
+            }
+            &__active {
+              &::before {
+                transform: rotate(-315deg);
+                transition: .2s;
+              }
+            }
           }
           &-list {
             background: none;
@@ -253,6 +272,25 @@
               &-sub {
                 &__link {
                   text-align: center;
+                  position: relative;
+                  &::before {
+                    content: '';
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    border-left: 2px solid #191919;
+                    border-top: 2px solid #191919;
+                    right: 0;
+                    top: 10px;
+                    transform: rotate(-135deg);
+                    transition: .2s;
+                  }
+                  &__active {
+                    &::before {
+                      transform: rotate(-315deg);
+                      transition: .2s;
+                    }
+                  }
                 }
                 &:hover {
                   .app-header__menu-inside__item-list__item-sub__list {

@@ -1,5 +1,5 @@
- <template>
-   <div>
-     home page
-   </div>
- </template>
+<template>
+  <div>
+    content was here
+  </div>
+</template>
