@@ -14,24 +14,36 @@
       <div class="app-footer__right-middle">
         <h3 class="app-footer__right-middle__title">Contacts</h3>
         <ul class="app-footer__right-middle__list">
-          <li class="app-footer__right-middle__list-item">51 Francis Street, Darlinghurst NSW 2010, AUS</li>
-          <li class="app-footer__right-middle__list-item">+61 1900 654 321</li>
-          <li class="app-footer__right-middle__list-item">+61 491 570 110</li>
-          <li class="app-footer__right-middle__list-item">office@addison.com.au</li>
-          <li class="app-footer__right-middle__list-item">contact@addison.com.au</li>
+          <li class="app-footer__right-middle__list-item">Phone: <a href="tel:6124707008">(612) 470 -7008</a></li>
+          <li class="app-footer__right-middle__list-item">Fax: (612) 746-7622</li>
+          <li class="app-footer__right-middle__list-item">Email: <a href="mailto:gandglab7@gmail.com">gandglab7@gmail.com</a></li>
         </ul>
         <button class="app-footer__right-middle__btn">get an estimate</button>
       </div>
       <div class="app-footer__right-bottom">
         <div class="app-footer__right-bottom__menu">
-          <a href="" class="app-footer__right-bottom__menu-item">home</a>
-          <a href="" class="app-footer__right-bottom__menu-item">about us</a>
-          <a href="" class="app-footer__right-bottom__menu-item">portfolio</a>
-          <a href="" class="app-footer__right-bottom__menu-item">blog</a>
-          <a href="" class="app-footer__right-bottom__menu-item">shop</a>
+          <router-link
+            v-for="(link, i) in nav"
+            :to="{ name: link.link }"
+            v-bind:key="i"
+            class="app-footer__right-bottom__menu-item"
+          >
+            {{link.title}}
+          </router-link>
         </div>
         <div class="app-footer__right-bottom__copyright">Copyright by BOLD THEMES. All rights reserved.</div>
       </div>
     </div>
   </footer>
 </template>
+
+<script>
+import HeaderNav from './helpers/headerNav'
+
+export default {
+  name: 'footer',
+  data: () => ({
+    nav: HeaderNav.NAVIGATION
+  })
+}
+</script>

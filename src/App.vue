@@ -4,7 +4,9 @@
 
       <main-header></main-header>
 
-      <router-view class="app-content"></router-view>
+      <div class="app-content">
+        <router-view></router-view>
+      </div>
 
       <main-footer></main-footer>
 
@@ -37,9 +39,6 @@ export default {
     &-content {
       padding-top: 178px;
       flex-grow: 2;
-      height: 1200px;
-      background: lightgrey;
-      text-align: center;
     }
   }
 

@@ -5,27 +5,22 @@ const NAVIGATION = [
     id: 'home',
     menu: [
       {
-        title: 'regular #1',
+        title: 'menu item example',
         link: '#',
         submenu: false
       },
       {
-        title: 'regular #2',
-        link: '#',
-        submenu: false
-      },
-      {
-        title: 'Sub',
+        title: 'menu with submenu example',
         id: 'sub',
         link: '#',
         submenu: true,
         submenuList: [
           {
-            title: 'sub 1',
+            title: 'submenu item example',
             link: '#'
           },
           {
-            title: 'sub 2',
+            title: 'submenu item example',
             link: '#'
           }
         ]
@@ -36,58 +31,16 @@ const NAVIGATION = [
     title: 'gallery',
     link: 'gallery',
     id: 'gallery'
-    // menu: [
-    //   {
-    //     title: 'regular #1',
-    //     link: '#'
-    //   },
-    //   {
-    //     title: 'regular #2',
-    //     link: '#'
-    //   },
-    //   {
-    //     title: 'regular #3',
-    //     link: '#'
-    //   }
-    // ]
   },
   {
     title: 'inventory',
     link: 'inventory',
-    id: 'inventory',
-    menu: [
-      {
-        title: 'regular #1',
-        link: '#'
-      },
-      {
-        title: 'regular #2',
-        link: '#'
-      },
-      {
-        title: 'regular #3',
-        link: '#'
-      }
-    ]
+    id: 'inventory'
   },
   {
     title: 'faq',
     link: 'faq',
-    id: 'faq',
-    menu: [
-      {
-        title: 'regular #1',
-        link: '#'
-      },
-      {
-        title: 'regular #2',
-        link: '#'
-      },
-      {
-        title: 'regular #3',
-        link: '#'
-      }
-    ]
+    id: 'faq'
   }
 ]
 
