@@ -10,115 +10,152 @@
     <transition name="slide-top">
       <div class="app-header__menu" v-if="mobileMenu && mobileScreen || !mobileScreen" v-bind:class="{'app-header__menu-fixed' : fixedState}">
         <div class="app-header__menu-inside">
-          <div class="app-header__menu-inside__item app-header__menu-inside__item-active">
-            <h3
-              @click="changeActiveMenu('home')"
-              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'home'}"
+          <div v-for="(item, i) in nav" v-bind:key="i" class="app-header__menu-inside__item">
+            <router-link
+              exact
+              :to="{ name: item.link }"
+              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === item.id}"
               class="app-header__menu-inside__item-title"
             >
-              Home
-            </h3>
-            <ul v-if="!mobileScreen || mobileScreen && menu === 'home'" class="app-header__menu-inside__item-list">
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-              <li class="app-header__menu-inside__item-list__item app-header__menu-inside__item-list__item-sub">
-                <h3
-                  @click="changeActiveSubMenu('sub')"
-                  v-bind:class="{'app-header__menu-inside__item-list__item-sub__link-active' : menu === 'sub'}"
-                  class="app-header__menu-inside__item-list__item-sub__link"
-                >
-                  Sub
-                </h3>
+              {{item.title}}
+              <div v-if="item.menu" @click.prevent="changeActiveMenu(item.id)" class="app-header__menu-inside__item-title__arrow"></div>
+            </router-link>
+            <ul v-if="!mobileScreen && item.menu || mobileScreen && item.menu && menu === item.id" class="app-header__menu-inside__item-list">
+              <template v-for="(navItem, j) in item.menu">
+                <li v-if="!navItem.submenu" v-bind:key="j" class="app-header__menu-inside__item-list__item">
+                  <a class="app-header__menu-inside__item-list__item-link" :href="navItem.link">{{navItem.title}}</a>
+                </li>
 
-                <ul v-if="!mobileScreen || mobileScreen && subMenu === 'sub'" class="app-header__menu-inside__item-list__item-sub__list">
-                  <li class="app-header__menu-inside__item-list__item-sub__list-item">
-                    <a href="" class="app-header__menu-inside__item-list__item-sub__list-item__link">sub menu link #1</a>
-                  </li>
-                  <li class="app-header__menu-inside__item-list__item-sub__list-item">
-                    <a href="" class="app-header__menu-inside__item-list__item-sub__list-item__link">sub menu link #2</a>
-                  </li>
-                </ul>
+                <li v-if="navItem.submenu" v-bind:key="j" class="app-header__menu-inside__item-list__item app-header__menu-inside__item-list__item-sub">
+                  <a
+                    :href="navItem.link"
+                    v-bind:class="{'app-header__menu-inside__item-list__item-sub__link-active' : subMenu === navItem.id}"
+                    class="app-header__menu-inside__item-list__item-sub__link"
+                  >
+                    <div @click.prevent="changeActiveSubMenu(navItem.id)" class="app-header__menu-inside__item-list__item-sub__link-arrow"></div>
+                    {{navItem.title}}
+                  </a>
 
-              </li>
+                  <ul v-if="!mobileScreen || mobileScreen && subMenu === navItem.id" class="app-header__menu-inside__item-list__item-sub__list">
+                    <li v-for="(navSubItem, k) in navItem.submenuList" v-bind:key="k" class="app-header__menu-inside__item-list__item-sub__list-item">
+                      <a href="" class="app-header__menu-inside__item-list__item-sub__list-item__link">{{navSubItem.title}}</a>
+                    </li>
+                  </ul>
+
+                </li>
+              </template>
             </ul>
           </div>
-          <div class="app-header__menu-inside__item">
-            <h3
-              @click="changeActiveMenu('gallery')"
-              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'gallery'}"
-              class="app-header__menu-inside__item-title"
-            >
-              Gallery
-            </h3>
-            <ul v-if="!mobileScreen || mobileScreen && menu === 'gallery'" class="app-header__menu-inside__item-list">
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-            </ul>
-          </div>
-          <div class="app-header__menu-inside__item">
-            <h3
-              @click="changeActiveMenu('plans')"
-              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'plans'}"
-              class="app-header__menu-inside__item-title"
-            >
-              Plans
-            </h3>
-            <ul v-if="!mobileScreen || mobileScreen && menu === 'plans'" class="app-header__menu-inside__item-list">
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-            </ul>
-          </div>
-          <div class="app-header__menu-inside__item">
-            <h3
-              @click="changeActiveMenu('financing')"
-              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'financing'}"
-              class="app-header__menu-inside__item-title"
-            >
-              Financing
-            </h3>
-            <ul v-if="!mobileScreen || mobileScreen && menu === 'financing'" class="app-header__menu-inside__item-list">
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-            </ul>
-          </div>
-          <div class="app-header__menu-inside__item">
-            <h3
-              @click="changeActiveMenu('inventory')"
-              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'inventory'}"
-              class="app-header__menu-inside__item-title"
-            >
-              Invertory
-            </h3>
-            <ul v-if="!mobileScreen || mobileScreen && menu === 'inventory'" class="app-header__menu-inside__item-list">
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-            </ul>
-          </div>
-          <div class="app-header__menu-inside__item">
-            <h3
-              @click="changeActiveMenu('faq')"
-              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'faq'}"
-              class="app-header__menu-inside__item-title"
-            >
-              FAQ
-            </h3>
-            <ul v-if="!mobileScreen || mobileScreen && menu === 'faq'" class="app-header__menu-inside__item-list">
-              <li class="app-header__menu-inside__item-list__item">
-                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>
-              </li>
-            </ul>
-          </div>
+
+<!--          <div class="app-header__menu-inside__item app-header__menu-inside__item-active">-->
+<!--            <h3-->
+<!--              @click="changeActiveMenu('home')"-->
+<!--              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'home'}"-->
+<!--              class="app-header__menu-inside__item-title"-->
+<!--            >-->
+<!--              Home-->
+<!--            </h3>-->
+<!--            <ul v-if="!mobileScreen || mobileScreen && menu === 'home'" class="app-header__menu-inside__item-list">-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--              <li class="app-header__menu-inside__item-list__item app-header__menu-inside__item-list__item-sub">-->
+<!--                <h3-->
+<!--                  @click="changeActiveSubMenu('sub')"-->
+<!--                  v-bind:class="{'app-header__menu-inside__item-list__item-sub__link-active' : menu === 'sub'}"-->
+<!--                  class="app-header__menu-inside__item-list__item-sub__link"-->
+<!--                >-->
+<!--                  Sub-->
+<!--                </h3>-->
+
+<!--                <ul v-if="!mobileScreen || mobileScreen && subMenu === 'sub'" class="app-header__menu-inside__item-list__item-sub__list">-->
+<!--                  <li class="app-header__menu-inside__item-list__item-sub__list-item">-->
+<!--                    <a href="" class="app-header__menu-inside__item-list__item-sub__list-item__link">sub menu link #1</a>-->
+<!--                  </li>-->
+<!--                  <li class="app-header__menu-inside__item-list__item-sub__list-item">-->
+<!--                    <a href="" class="app-header__menu-inside__item-list__item-sub__list-item__link">sub menu link #2</a>-->
+<!--                  </li>-->
+<!--                </ul>-->
+
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="app-header__menu-inside__item">-->
+<!--            <h3-->
+<!--              @click="changeActiveMenu('gallery')"-->
+<!--              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'gallery'}"-->
+<!--              class="app-header__menu-inside__item-title"-->
+<!--            >-->
+<!--              Gallery-->
+<!--            </h3>-->
+<!--            <ul v-if="!mobileScreen || mobileScreen && menu === 'gallery'" class="app-header__menu-inside__item-list">-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="app-header__menu-inside__item">-->
+<!--            <h3-->
+<!--              @click="changeActiveMenu('plans')"-->
+<!--              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'plans'}"-->
+<!--              class="app-header__menu-inside__item-title"-->
+<!--            >-->
+<!--              Plans-->
+<!--            </h3>-->
+<!--            <ul v-if="!mobileScreen || mobileScreen && menu === 'plans'" class="app-header__menu-inside__item-list">-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="app-header__menu-inside__item">-->
+<!--            <h3-->
+<!--              @click="changeActiveMenu('financing')"-->
+<!--              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'financing'}"-->
+<!--              class="app-header__menu-inside__item-title"-->
+<!--            >-->
+<!--              Financing-->
+<!--            </h3>-->
+<!--            <ul v-if="!mobileScreen || mobileScreen && menu === 'financing'" class="app-header__menu-inside__item-list">-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="app-header__menu-inside__item">-->
+<!--            <h3-->
+<!--              @click="changeActiveMenu('inventory')"-->
+<!--              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'inventory'}"-->
+<!--              class="app-header__menu-inside__item-title"-->
+<!--            >-->
+<!--              Invertory-->
+<!--            </h3>-->
+<!--            <ul v-if="!mobileScreen || mobileScreen && menu === 'inventory'" class="app-header__menu-inside__item-list">-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--          <div class="app-header__menu-inside__item">-->
+<!--            <h3-->
+<!--              @click="changeActiveMenu('faq')"-->
+<!--              v-bind:class="{'app-header__menu-inside__item-title__active' : menu === 'faq'}"-->
+<!--              class="app-header__menu-inside__item-title"-->
+<!--            >-->
+<!--              FAQ-->
+<!--            </h3>-->
+<!--            <ul v-if="!mobileScreen || mobileScreen && menu === 'faq'" class="app-header__menu-inside__item-list">-->
+<!--              <li class="app-header__menu-inside__item-list__item">-->
+<!--                <a class="app-header__menu-inside__item-list__item-link" href="">regular menu</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
         </div>
       </div>
     </transition>
@@ -126,14 +163,17 @@
 </template>
 
 <script>
+import HeaderNav from './helpers/headerNav'
+
 export default {
   name: 'header',
   components: {
   },
   data: () => ({
+    nav: HeaderNav.NAVIGATION,
     menu: null,
-    mobileMenu: true,
     subMenu: null,
+    mobileMenu: true,
     fixedState: false,
     mobileScreen: false
   }),
@@ -155,6 +195,7 @@ export default {
     },
     changeActiveSubMenu (subMenu) {
       this.subMenu = this.subMenu === subMenu ? null : subMenu
+      console.log(this.subMenu)
     }
   }
 }

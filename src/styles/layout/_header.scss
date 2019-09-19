@@ -55,25 +55,20 @@
         padding: 0 40px 0 0;
         position: relative;
         z-index: 9;
-        &::before {
-          content: '';
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          position: absolute;
-          left: 0;
-          top: 60px;
-          background: #8bb93e;
-          opacity: 0;
-          transition: .2s;
-          z-index: 3;
-        }
+        //&::before {
+        //  content: '';
+        //  width: 8px;
+        //  height: 8px;
+        //  border-radius: 50%;
+        //  position: absolute;
+        //  left: 0;
+        //  top: 60px;
+        //  background: #8bb93e;
+        //  opacity: 0;
+        //  transition: .2s;
+        //  z-index: 3;
+        //}
         &:hover {
-          &::before {
-            opacity: 1;
-            transform: scale(1.5);
-            transition: .2s;
-          }
           .app-header__menu-inside__item-list {
             display: flex;
             opacity: 1;
@@ -83,7 +78,38 @@
             transform: rotateX(0deg);
           }
         }
-        &-active {
+        &-title {
+          text-transform: uppercase;
+          font-size: 14px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: #313131;
+          position: relative;
+          &::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: #8bb93e;
+            opacity: 0;
+            transition: .2s;
+            z-index: 3;
+          }
+          &:hover {
+            cursor: pointer;
+            &::before {
+              opacity: 1;
+              transform: scale(1.5);
+              transition: .2s;
+            }
+          }
+        }
+        .router-link-active {
           &::before {
             content: '';
             width: 8px;
@@ -96,16 +122,6 @@
             opacity: 1;
             transition: .2s;
             z-index: 3;
-          }
-        }
-        &-title {
-          text-transform: uppercase;
-          font-size: 14px;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          &:hover {
-            cursor: pointer;
           }
         }
         &-list {
@@ -284,23 +300,12 @@
           padding: 14px 0;
           display: flex;
           flex-direction: column;
-          &:hover {
-            &::before {
-              content: none;
-            }
-          }
-          &-active {
-            &::before {
-              content: none;
-            }
-          }
           &-title {
             padding-bottom: 14px;
             width: 225px;
             justify-content: center;
             position: relative;
-            &::before {
-              content: '';
+            &__arrow {
               position: absolute;
               width: 8px;
               height: 8px;
@@ -311,11 +316,22 @@
               transform: rotate(-135deg);
               transition: .2s;
             }
-            &__active {
+            &:hover {
               &::before {
+                content: none;
+              }
+            }
+            &__active {
+              .app-header__menu-inside__item-title__arrow {
                 transform: rotate(-315deg);
                 transition: .2s;
               }
+            }
+
+          }
+          .router-link-active {
+            &::before {
+              content: none;
             }
           }
           &-list {
@@ -340,8 +356,7 @@
                 &__link {
                   text-align: center;
                   position: relative;
-                  &::before {
-                    content: '';
+                  &-arrow {
                     position: absolute;
                     width: 8px;
                     height: 8px;
@@ -352,8 +367,8 @@
                     transform: rotate(-135deg);
                     transition: .2s;
                   }
-                  &__active {
-                    &::before {
+                  &-active {
+                    .app-header__menu-inside__item-list__item-sub__link-arrow {
                       transform: rotate(-315deg);
                       transition: .2s;
                     }

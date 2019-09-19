@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from './views/Home.vue'
+import Gallery from './views/Gallery.vue'
+import Inventory from './views/Inventory.vue'
+import Faq from './views/Faq.vue'
 
 Vue.use(Router)
 
@@ -13,6 +16,21 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: Gallery
+    },
+    {
+      path: '/inventory',
+      name: 'inventory',
+      component: Inventory
+    },
+    {
+      path: '/faq',
+      name: 'faq',
+      component: Faq
     }
   ]
 })
