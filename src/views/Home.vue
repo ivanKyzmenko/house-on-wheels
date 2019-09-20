@@ -16,16 +16,16 @@
 
       <div class="app-content-home__services-right">
         <div class="app-content-home__services-right__item">
+          <v-icon class="app-content-home__services-right__item-icon">mdi-caravan</v-icon>
+          <h3 class="app-content-home__services-right__item-title">Food Trailer</h3>
+        </div>
+        <div class="app-content-home__services-right__item">
           <v-icon class="app-content-home__services-right__item-icon">mdi-bus-school</v-icon>
           <h3 class="app-content-home__services-right__item-title">Food Truck</h3>
         </div>
         <div class="app-content-home__services-right__item">
           <v-icon class="app-content-home__services-right__item-icon">mdi-face-agent</v-icon>
           <h3 class="app-content-home__services-right__item-title">Service</h3>
-        </div>
-        <div class="app-content-home__services-right__item">
-          <v-icon class="app-content-home__services-right__item-icon">mdi-caravan</v-icon>
-          <h3 class="app-content-home__services-right__item-title">Food Trailer</h3>
         </div>
       </div>
     </div>
