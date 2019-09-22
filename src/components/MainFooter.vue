@@ -41,7 +41,7 @@
 import HeaderNav from './helpers/headerNav'
 
 export default {
-  name: 'footer',
+  name: 'MainFooter',
   data: () => ({
     nav: HeaderNav.NAVIGATION
   })

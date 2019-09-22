@@ -58,7 +58,7 @@
 import HeaderNav from './helpers/headerNav'
 
 export default {
-  name: 'header',
+  name: 'MainHeader',
   components: {
   },
   data: () => ({
