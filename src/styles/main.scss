@@ -1,4 +1,5 @@
 //abstracts
+@import 'abstracts/variables';
 
 //vendors
 
@@ -10,15 +11,17 @@
 @import 'layout/grid';
 @import 'layout/header';
 @import 'layout/footer';
-@import 'layout/home';
-@import 'layout/gallery';
-@import 'layout/faq';
-@import 'layout/inventory';
 
 //components
+@import 'components/photo-gallery';
 @import 'components/contact-us';
+@import 'components/vue-bar';
 
 //pages
+@import 'pages/home';
+@import 'pages/gallery';
+@import 'pages/faq';
+@import 'pages/inventory';
 
 //themes
 
