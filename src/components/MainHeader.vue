@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     initMobileScreen () {
-      this.mobileScreen = window.innerWidth < 1200
+      this.mobileScreen = document.documentElement.clientWidth < 1200
     },
     scrollHandler () {
       this.fixedState = window.scrollY > 96
@@ -87,7 +87,6 @@ export default {
     },
     changeActiveSubMenu (subMenu) {
       this.subMenu = this.subMenu === subMenu ? null : subMenu
-      console.log(this.subMenu)
     }
   }
 }
